@@ -34,3 +34,12 @@ jobs:
           push: true
           tags: eduardojes72/teste-nginx-ci:latest
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Deploy stack to Portainer
+        uses: carlrygart/portainer-stack-deploy@v1
+        with:
+          portainer-host: ${{ secrets.PORTAINER_HOST }}
+          username: ${{ secrets.PORTAINER_USERNAME }}
+          password: ${{ secrets.PORTAINER_PASSWORD }}
+          stack-name: 'nginx'
+          image: eduardojes72/teste-nginx-ci:latest
