@@ -42,4 +42,5 @@ jobs:
           username: ${{ secrets.PORTAINER_USERNAME }}
           password: ${{ secrets.PORTAINER_PASSWORD }}
           stack-name: 'nginx'
+          stack-definition: ''
           image: eduardojes72/teste-nginx-ci:latest
