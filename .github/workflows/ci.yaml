@@ -36,9 +36,14 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Deploy stack to Portainer
-        uses:  wirgen/portainer-stack-redeploy-action@v1.1
-        with:
-          portainerUrl: ${{secrets.PORTAINER_URL}}
-          accessToken: ${{secrets.ACESS_TOKEN}}
-          stackId: ${{secrets.STACK_ID}}
-          endpointId: ${{secrets.ENDPOINT_ID}}
+        uses: LGinC/portainer-stack-deploy@master
+        with: 
+          serverurl: ${{ secrets.PORTAINER_HOST }}
+          username: ${{ secrets.PORTAINER_USERNAME }}
+          password: ${{ secrets.PORTAINER_PASSWORD }}
+          endpointId: 1
+          stackname: nginx
+          imagenames: |
+              eduardojes72/teste-nginx-ci:latest
+          variables: |
+              tag=6.0-alpine
